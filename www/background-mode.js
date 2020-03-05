@@ -43,6 +43,7 @@ exports.enable = function() {
             exports.fireEvent('enable');
         };
 
+    this._isEnabled = true;
     cordova.exec(fn, null, 'BackgroundMode', 'enable', []);
 };
 
@@ -61,6 +62,7 @@ exports.disable = function() {
             exports.fireEvent('disable');
         };
 
+    this._isEnabled = false;
     cordova.exec(fn, null, 'BackgroundMode', 'disable', []);
 };
 
