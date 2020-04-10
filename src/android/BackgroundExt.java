@@ -300,23 +300,6 @@ class BackgroundExt {
     }
 
     /**
-     * Clean required flags from the window to show lock screen.
-     */
-    static void clearWindowFlags(Activity app) {
-        final Window window = app.getWindow();
-        app.runOnUiThread(new Runnable() {
-            public void run() {
-                window.clearFlags(
-                    FLAG_ALLOW_LOCK_WHILE_SCREEN_ON |
-                        FLAG_SHOW_WHEN_LOCKED |
-                        FLAG_TURN_SCREEN_ON |
-                        FLAG_DISMISS_KEYGUARD
-                );
-            }
-        });
-    }
-
-    /**
      * The activity referenced by cordova.
      *
      * @return The main activity of the app.
