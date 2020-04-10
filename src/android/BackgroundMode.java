@@ -131,6 +131,9 @@ public class BackgroundMode extends CordovaPlugin {
      */
     @Override
     public void onPause(boolean multitasking) {
+        if (isInForeground()) {
+            BackgroundExt.addWindowFlags(cordova.getActivity());
+        }
         super.onPause(multitasking);
         inBackground = true;
         startService();
@@ -143,6 +146,7 @@ public class BackgroundMode extends CordovaPlugin {
      */
     @Override
     public void onResume(boolean multitasking) {
+        BackgroundExt.clearWindowFlags(cordova.getActivity());
         super.onResume(multitasking);
         inBackground = false;
         stopService();
