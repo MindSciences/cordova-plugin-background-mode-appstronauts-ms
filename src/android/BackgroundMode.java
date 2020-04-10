@@ -161,6 +161,15 @@ public class BackgroundMode extends CordovaPlugin {
         super.onDestroy();
     }
 
+    private boolean isInForeground() {
+        CordovaWebView view = webView;
+        KeyguardManager km = (KeyguardManager) view.getContext()
+            .getSystemService(Context.KEYGUARD_SERVICE);
+        if (km != null && km.isKeyguardLocked())
+            return false;
+        return view.getView().getWindowVisibility() == View.VISIBLE;
+    }
+
     /**
      * Enable the background mode.
      */
