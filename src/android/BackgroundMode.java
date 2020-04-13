@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.Context;
 import android.os.IBinder;
+import android.view.View;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
