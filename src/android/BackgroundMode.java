@@ -131,6 +131,9 @@ public class BackgroundMode extends CordovaPlugin {
      */
     @Override
     public void onPause(boolean multitasking) {
+        if (isInForeground()) {
+            BackgroundExt.addWindowFlags(cordova.getActivity());
+        }
         super.onPause(multitasking);
         inBackground = true;
         startService();
@@ -143,6 +146,7 @@ public class BackgroundMode extends CordovaPlugin {
      */
     @Override
     public void onResume(boolean multitasking) {
+        BackgroundExt.clearWindowFlags(cordova.getActivity());
         super.onResume(multitasking);
         inBackground = false;
         stopService();
@@ -155,6 +159,15 @@ public class BackgroundMode extends CordovaPlugin {
     public void onDestroy() {
         stopService();
         super.onDestroy();
+    }
+
+    private boolean isInForeground() {
+        CordovaWebView view = webView;
+        KeyguardManager km = (KeyguardManager) view.getContext()
+            .getSystemService(Context.KEYGUARD_SERVICE);
+        if (km != null && km.isKeyguardLocked())
+            return false;
+        return view.getView().getWindowVisibility() == View.VISIBLE;
     }
 
     /**
