@@ -26,6 +26,7 @@ import android.app.KeyguardManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.Context;
 import android.os.IBinder;
 
 import org.apache.cordova.CallbackContext;
