@@ -22,6 +22,7 @@
 package de.appplant.cordova.plugin.background;
 
 import android.app.Activity;
+import android.app.KeyguardManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
